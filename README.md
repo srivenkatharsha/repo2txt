@@ -38,9 +38,17 @@ Run the script from the command line by specifying the path to the repository an
 python repo2txt.py -r [path_to_repo] -o [output_file_name]
 ```
 
+Alternatively, on Windows, you can run the command:
+
+```bash
+repo2txt -r [path_to_repo] -o [output_file_name]
+```
+
 Replace `[path_to_repo]` with the path to your repository and `[output_file_name]` with your desired output file name (including the `.txt` or `.docx` extension).
 
 By default, if no path is specified, the script operates in the current directory. Similarly, if no output file name is provided, it defaults to `output.txt`.
+
+For convenience, on Windows, you can add the `repo2txt/src/repo2txt` directory to your PATH environment variable to run the batch script from any location.
 
 ### Optional Command-Line Arguments:
 

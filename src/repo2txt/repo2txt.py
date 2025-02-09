@@ -41,7 +41,9 @@ def load_config(file_path):
         return json.load(file)
 
 # Usage
-config = load_config('config.json')
+script_dir = os.path.dirname(os.path.abspath(__file__))  # Get script's directory
+config_path = os.path.join(script_dir, 'config.json')  # Absolute path to config.json
+config = load_config(config_path)
 IMAGE_EXTENSIONS = config["image_extensions"]
 VIDEO_EXTENSIONS = config["video_extensions"]
 AUDIO_EXTENSIONS = config["audio_extensions"]
