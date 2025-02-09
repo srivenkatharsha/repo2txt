@@ -6,6 +6,26 @@ import json
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+import tiktoken
+
+def estimate_tokens_from_file(file_path, model="o200k_base"):
+    """Estimates tokens from a file using tiktoken.
+
+    Args:
+        file_path (str): Path to the file.
+        model (str, optional): tiktoken model name. Defaults to "o200k_base".
+
+    Returns:
+        int: Estimated number of tokens, or None if an error occurs.
+    """
+    try:
+        encoding = tiktoken.get_encoding(model)
+        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+            file_content = f.read()
+            return len(encoding.encode(file_content))
+    except Exception as e:
+        print(f"Error estimating tokens from file {file_path}: {e}")
+        return None
 
 def load_config(file_path):
     """
@@ -319,7 +339,7 @@ def main():
         doc.add_heading("<-- File Content Ends", level=2)
         doc.save(args.output_file)
     else:
-        with open(args.output_file, 'w') as output_file:
+        with open(args.output_file, 'w', encoding="utf-8") as output_file:
             output_file.write("Repository Documentation\n")
             output_file.write(
             "This document provides a comprehensive overview of the repository's structure and contents.\n"
@@ -337,5 +357,10 @@ def main():
             output_file.write("\n\nFile Content Begin -->\n")
             write_file_contents_in_order(args.repo_path, output_file, args)
             output_file.write("\n<-- File Content Ends\n\n")
+    
+    token_count = estimate_tokens_from_file(args.output_file)
+    if token_count is not None:
+        print(f"Estimated tokens in {args.output_file}: {token_count} (model: o200k_base)")
+
 if __name__ == "__main__":
     main()
