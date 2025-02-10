@@ -1,5 +1,8 @@
 # repo2txt
 
+**Forked from [`donoceidon/repo2txt`](https://github.com/donoceidon/repo2txt)**  
+This project is a fork of `donoceidon/repo2txt`, with additional features and improvements.
+
 ## Overview
 `repo2txt` is a Python tool designed to streamline the preparation of codebase training data for GPT-style models (LLMs). It is particularly useful for passing an entire codebase to a GPT model. This script automates the process of compiling project or repository assets into a single, structured text file or Word document. The output includes a hierarchical representation of the directory structure along with the contents of each file, providing a comprehensive view of the codebase.
 
