@@ -74,6 +74,7 @@ def parse_args():
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
 
+    parser.add_argument('--version', '-v', action='version', version="repo2txt v1.0.0")
     parser.add_argument('-r', '--repo_path', default=os.getcwd(),
                         help='Path to the directory to process (ie., cloned repo). if no path is specified defaults to the current directory.')
     parser.add_argument('-o', '--output_file', default=DEFAULT_OUTPUT_FILE,

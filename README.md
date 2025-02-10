@@ -32,13 +32,25 @@ navigate to the repo2txt directory:
 cd repo2txt/src/repo2txt
 ```
 
+To view all available options, you can use:
+
+```bash
+python repo2txt.py --help or python repo2txt.py -h
+```
+
+To check the version of the script, you can use:
+
+```bash
+python repo2txt.py --version or python repo2txt.py -v
+```
+
 Run the script from the command line by specifying the path to the repository and the desired output file name. For example:
 
 ```bash
 python repo2txt.py -r [path_to_repo] -o [output_file_name]
 ```
 
-Alternatively, on Windows, you can run the command:
+Alternatively, on Windows, you can run the command (this uses the batch script in the `repo2txt/src/repo2txt` directory):
 
 ```bash
 repo2txt -r [path_to_repo] -o [output_file_name]
